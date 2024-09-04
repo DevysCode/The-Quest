@@ -60,6 +60,25 @@ body{
   height: 10em;
   padding: 1em;
 }
+.text_box{
+  width: 90%;
+  height: 20em;
+  margin-top: 20em;
+  margin-left: 5em;
+  border: 5px solid black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgb(212, 212, 212);
+}
+html::-webkit-scrollbar{
+width: 5px;
+}
+html::-webkit-scrollbar-track{
+  background-color: rgb(27, 25, 25)
+}
+html::-webkit-scrollbar-thumb{
+  background-color: aliceblue;
+  border-radius: 10px;
+}
 @keyframes close{
   0%{height: 9em;}
   20%{height: 6.5em;}

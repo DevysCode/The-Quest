@@ -1,13 +1,13 @@
-let selection = document.getElementById('select_fighter')
 let theArcher = document.getElementById('Archer')
 let theThief = document.getElementById('Thief')
 let theWarrior = document.getElementById('Warrior')
 let theMage = document.getElementById('Mage')
+let textBox = document.getElementById("text_box")
 
-console.log(selection)
 
 theArcher.addEventListener("click", function(){
   console.log("Archer")
+  goDown()
 })
 theThief.addEventListener("click", function(){
   console.log("Thief")
@@ -54,6 +54,13 @@ const characters = [
   }
 ]
 console.log(characters[0].name)
+
+function goDown(){
+  window.scroll({
+    top: 600,
+    behavior: "smooth",
+  });
+}
 
 /*const select = characters.map(function(character){
  console.log(character)
