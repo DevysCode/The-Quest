@@ -61,7 +61,11 @@ function goDown(){
     behavior: "smooth",
   });
 }
+for( let character of characters){
+  textBox.textContent += character.skill
+  console.log(character)
+}
 
-/*const select = characters.map(function(character){
+const select = characters.map(function(character){
  console.log(character)
-})*/
+})
