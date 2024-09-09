@@ -61,9 +61,12 @@ body{
   padding: 1em;
 }
 .text_box{
+  display: flex;
+  justify-content: space-between;
   width: 90%;
-  height: 20em;
-  margin-top: 20em;
+  height: 16em;
+  margin-top: 10em;
+  margin-bottom: 10em;
   margin-left: 60px;
   display: flex;
   justify-content: center;
@@ -72,7 +75,28 @@ body{
   box-shadow: 0px 0px 5px rgb(212, 212, 212);
   font-size: 2em;
   color: azure;
+  padding: 1em;
 }
+img{
+  width: 11em;
+  aspect-ratio: 2/1;
+  padding-left: 1em;
+  opacity: 90%;
+  border-radius: 2em;
+}
+.thiefimg{
+ display: none;
+}
+.warriorimg{
+  display: none;
+}
+.archerimg{
+  display: none;
+}
+.mageimg{
+  display: none;
+}
+
 html::-webkit-scrollbar{
 width: 5px;
 }

@@ -1,71 +1,82 @@
-let theArcher = document.getElementById('Archer')
-let theThief = document.getElementById('Thief')
-let theWarrior = document.getElementById('Warrior')
-let theMage = document.getElementById('Mage')
-let textBox = document.getElementById("text_box")
+const theArcher = document.getElementById('Archer')
+const theThief = document.getElementById('Thief')
+const theWarrior = document.getElementById('Warrior')
+const theMage = document.getElementById('Mage')
+const textBox = document.getElementById("textbox")
+const btns = document.querySelectorAll('.character_select')
+let archerImg = document.querySelector('.archerimg')
+let warriorImg = document.querySelector('.warriorimg')
+let mageImg = document.querySelector('.mageimg')
+let thiefImg = document.querySelector('.thiefimg')
 
 
 theArcher.addEventListener("click", function(){
   console.log("Archer")
   goDown()
+  removeBtn()
+  textBox.textContent = dialogTreeAr
+  archerImg.style.display = 'block'
+  addBtn()
 })
 theThief.addEventListener("click", function(){
   console.log("Thief")
+  goDown()
+  removeBtn()
+  textBox.textContent = dialogTreeTh
+  thiefImg.style.display = 'block'
 })
 theWarrior.addEventListener("click", function(){
   console.log("Warrior")
+  goDown()
+  removeBtn()
+  textBox.textContent = dialogTreeWar
+  warriorImg.style.display = 'block'
 })
 theMage.addEventListener("click", function(){
   console.log("Mage")
+  goDown()
+  removeBtn()
+  textBox.textContent = dialogTreeMa
+  mageImg.style.display = 'block'
 })
 
-const characters = [
-  Archer = {
-    name : "Archer",
-    health:80,
-    baseAttack: 2,
-    skill: "Long Shot",
-    skillAttack: 6,
-    skillPoints: 20
-  },
-  Thief = {
-    name : "Thief",
-    health:100,
-    baseAttack: 6,
-    skill: "Back Stab",
-    skillAttack: 8,
-    skillPoints: 20
-  },
-  Warrior = {
-    name : "Warrior",
-    health:150,
-    baseAttack: 4,
-    skill: "Long Sword",
-    skillAttack: 6,
-    skillPoints: 20
-  },
-  Mage = {
-    name : "Mage",
-    health:100,
-    baseAttack: 3,
-    skill: "Fire Ball",
-    skillAttack: 6,
-    skillPoints: 20
-  }
-]
-console.log(characters[0].name)
+class TheCharcter{
+constructor(name, health, baseAttack, skill, skillAttack, skillPoints){
+ this.name = name;
+ this.health = health;
+ this.baseAttack = baseAttack;
+ this.skill = skill;
+ this.skillAttack = skillAttack;
+ this.skillPoints = skillPoints;
+ }
+ getStats(){
+  return `Player ${this.name} Health ${this.health} Base Attack ${this.baseAttack} Skill ${this.skill} Skill Power ${this.skillAttack} Skill Points ${this.skillPoints} `
+ }
+}
 
+const archer = new TheCharcter('Archer', 80, 2, 'Long Shot', 6, 20)
+const thief = new TheCharcter('Thief', 100, 6, 'Back Stab', 8, 20)
+const warrior = new TheCharcter('Warrior', 150, 4, 'Long Sword', 6, 20)
+const mage = new TheCharcter('Mage', 100, 3, 'Fire Ball', 6, 20)
+
+
+const dialogTreeAr =  `Welcome travler its time to begin your quest. You are the ${archer.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeWar =  `Welcome travler its time to begin your quest. You are the ${warrior.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeTh =  `Welcome travler its time to begin your quest. You are the ${thief.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeMa =  `Welcome travler its time to begin your quest. You are the ${mage.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
 function goDown(){
   window.scroll({
-    top: 600,
+    top: 700,
     behavior: "smooth",
   });
 }
-for( let character of characters){
-  textBox.textContent += character.skill
-  console.log(character)
+function removeBtn(){
+  btns.forEach((e) => {
+    e.remove()
+  })
 }
 
-const select = characters.map(function(character){
- console.log(character)
-})
+function addBtn(){
+ const newBtn = document.createElement('button')
+ document.div.appendChild(newBtn)
+}
