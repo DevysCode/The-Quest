@@ -8,7 +8,11 @@ let archerImg = document.querySelector('.archerimg')
 let warriorImg = document.querySelector('.warriorimg')
 let mageImg = document.querySelector('.mageimg')
 let thiefImg = document.querySelector('.thiefimg')
-
+let btnSection = document.querySelector('.button_section')
+const travel = document.querySelectorAll('.travel_button')
+let tavern = document.querySelector('.tavern')
+let cave = document.querySelector('.cave')
+let beast = document.querySelector('.beast')
 
 theArcher.addEventListener("click", function(){
   console.log("Archer")
@@ -16,7 +20,7 @@ theArcher.addEventListener("click", function(){
   removeBtn()
   textBox.textContent = dialogTreeAr
   archerImg.style.display = 'block'
-  addBtn()
+  btnShow()
 })
 theThief.addEventListener("click", function(){
   console.log("Thief")
@@ -24,6 +28,7 @@ theThief.addEventListener("click", function(){
   removeBtn()
   textBox.textContent = dialogTreeTh
   thiefImg.style.display = 'block'
+  btnShow()
 })
 theWarrior.addEventListener("click", function(){
   console.log("Warrior")
@@ -31,6 +36,7 @@ theWarrior.addEventListener("click", function(){
   removeBtn()
   textBox.textContent = dialogTreeWar
   warriorImg.style.display = 'block'
+  btnShow()
 })
 theMage.addEventListener("click", function(){
   console.log("Mage")
@@ -38,7 +44,20 @@ theMage.addEventListener("click", function(){
   removeBtn()
   textBox.textContent = dialogTreeMa
   mageImg.style.display = 'block'
+  btnShow()
 })
+
+tavern.addEventListener('click', function(){
+ textBox.textContent = dialogTreeTav
+})
+cave.addEventListener('click', function(){
+  textBox.textContent = dialogTreeCav
+ })
+
+ beast.addEventListener('click', function(){
+  textBox.textContent = dialogTreeBea
+ })
+ 
 
 class TheCharcter{
 constructor(name, health, baseAttack, skill, skillAttack, skillPoints){
@@ -60,13 +79,17 @@ const warrior = new TheCharcter('Warrior', 150, 4, 'Long Sword', 6, 20)
 const mage = new TheCharcter('Mage', 100, 3, 'Fire Ball', 6, 20)
 
 
-const dialogTreeAr =  `Welcome travler its time to begin your quest. You are the ${archer.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
-const dialogTreeWar =  `Welcome travler its time to begin your quest. You are the ${warrior.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
-const dialogTreeTh =  `Welcome travler its time to begin your quest. You are the ${thief.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
-const dialogTreeMa =  `Welcome travler its time to begin your quest. You are the ${mage.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeAr =  `Welcome traveler its time to begin your quest. You are the ${archer.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeWar =  `Welcome traveler its time to begin your quest. You are the ${warrior.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeTh =  `Welcome traveler its time to begin your quest. You are the ${thief.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeMa =  `Welcome traveler its time to begin your quest. You are the ${mage.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
+const dialogTreeTav = `Welcome to the tavern my friend if you have gold to spend i'll happily give you some items for your journey. I've got food to help your health and a blacksmith to make your weapon stronger`
+const dialogTreeCav = `These caves are dangerous filled with all sorts of monsters, but the loot and gold may help you defeat the beast`
+const dialogTreeBea = `The time has come fight the Beast and complete your journey!`
+
 function goDown(){
   window.scroll({
-    top: 700,
+    top: 800,
     behavior: "smooth",
   });
 }
@@ -76,7 +99,11 @@ function removeBtn(){
   })
 }
 
-function addBtn(){
- const newBtn = document.createElement('button')
- document.div.appendChild(newBtn)
+function btnShow(){
+ travel.forEach((e) => {
+  e.style.display = "flex"
+ })
 }
+
+
+
