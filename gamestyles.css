@@ -77,12 +77,12 @@ body{
   display: flex;
   justify-content: space-between;
 }
-.button_section{
+.button_section, .button_section_tavern, .button_section_fight{
   max-width: 50%;
   display: flex;
   justify-content: space-around;
 }
-.travel_button{
+.travel_button, .travel_button_tavern, .travel_button_fight{
   display: none;
   padding: .4em;
   font-size: .8em;

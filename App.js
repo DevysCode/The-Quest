@@ -14,6 +14,13 @@ let tavern = document.querySelector('.tavern')
 let cave = document.querySelector('.cave')
 let beast = document.querySelector('.beast')
 
+
+
+
+
+
+
+
 theArcher.addEventListener("click", function(){
   console.log("Archer")
   goDown()
