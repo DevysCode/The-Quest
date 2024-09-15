@@ -147,7 +147,7 @@ strike.addEventListener('click',function(){
     textBox.textContent = `You defeated the monster enjoy some gold`
     gold += Math.floor((Math.random() * 8) + 1)
     goldCount.textContent = `Gold: ${gold}`
-    gold = 0
+    
   }
  
   
