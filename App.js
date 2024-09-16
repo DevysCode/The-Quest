@@ -32,15 +32,13 @@ let breadHeal = 25
 let wpCurrent = 4
 let wpUpgrade = 4
 let gold = 10
-let monstersHealth = 30
+let monstersHealth = Math.floor((Math.random() * 30) + 1)
 let beastHealth = 50
 let skillAttackPower = Math.floor((Math.random() * 8) + 1)
 // Character Select//
 theArcher.addEventListener("click", function(){
-  health.textContent = `Health: ${healthCurrent}`
-  wp.textContent = `Weapon Power: ${wpCurrent}`
+  beginStats()
   sp.textContent = `Skill Points: ${archer.skillPoints}`
-  goldCount.textContent = `Gold: ${gold}` 
   goDown()
   removeBtn()
   textBox.textContent = dialogTreeAr
@@ -48,8 +46,7 @@ theArcher.addEventListener("click", function(){
   btnShow()
 })
 theThief.addEventListener("click", function(){
-  health.textContent = `Health: ${healthCurrent}`
-  wp.textContent = `Weapon Power: ${wpCurrent}`
+  beginStats()
   sp.textContent = `Skill Points: ${thief.skillPoints}`
   goDown()
   removeBtn()
@@ -58,8 +55,7 @@ theThief.addEventListener("click", function(){
   btnShow()
 })
 theWarrior.addEventListener("click", function(){
-  health.textContent = `Health: ${healthCurrent}`
-  wp.textContent = `Weapon Power: ${wpCurrent}`
+  beginStats()
   sp.textContent = `Skill Points: ${warrior.skillPoints}`
   goDown()
   removeBtn()
@@ -68,8 +64,7 @@ theWarrior.addEventListener("click", function(){
   btnShow()
 })
 theMage.addEventListener("click", function(){
-   health.textContent = `Health: ${healthCurrent}`
-   wp.textContent = `Weapon Power: ${wpCurrent}`
+  beginStats()
   sp.textContent = `Skill Points: ${mage.skillPoints}`
   goDown()
   removeBtn()
@@ -77,12 +72,16 @@ theMage.addEventListener("click", function(){
   mageImg.style.display = 'block'
   btnShow()
 })
+function beginStats(){
+  health.textContent = `Health: ${healthCurrent}`
+  wp.textContent = `Weapon Power: ${wpCurrent}`
+  goldCount.textContent = `Gold: ${gold}` 
+}
 //travel mechanics//
 tavern.addEventListener('click', function(){
  textBox.textContent = dialogTreeTav
  btnNone()
  btnShowTavern()
-
 })
 cave.addEventListener('click', function(){
   textBox.textContent = dialogTreeCav
@@ -108,7 +107,7 @@ cave.addEventListener('click', function(){
  })
 //tavern mechanics//
  bread.addEventListener('click', function(){
-  if(gold > 0){
+  if(gold >= 5){
     healthCurrent += breadHeal 
   health.textContent = `Health: ${healthCurrent}`
     gold -= 5
@@ -120,11 +119,9 @@ cave.addEventListener('click', function(){
   } else{
     textBox.textContent = moreGold
   }
- 
- 
  })
  weapon.addEventListener('click', function(){
-  if(gold > 0){
+  if(gold >= 10){
     wpCurrent += wpUpgrade 
   wp.textContent = `Weapon Power: ${wpCurrent}`
   gold -= 10
@@ -137,6 +134,7 @@ cave.addEventListener('click', function(){
     textBox.textContent = moreGold
   }
  })
+
 //fight Mechanics//
 strike.addEventListener('click',function(){
   if(monstersHealth >= 0){
@@ -144,10 +142,10 @@ strike.addEventListener('click',function(){
     beastHealth -= wpCurrent
     textBox.textContent = `You strike the monster and did ${wpCurrent} damage`
     monsterAttack()
-    console.log(monstersHealth)
-  } else{
+    isDead()
+  }else{
     reward()
-    monstersHealth = 30
+    monstersHealth = Math.floor((Math.random() * 30) + 1)
     beastHealth = 50
   }
 })
@@ -157,12 +155,19 @@ skillStrike.addEventListener('click', function(){
     beastHealth -= skillAttackPower
     textBox.textContent = `You strike the monster and did ${skillAttackPower} damage`
     monsterAttack()
+    isDead()
   } else{
     reward()
-    monstersHealth = 30
+    monstersHealth = Math.floor((Math.random() * 30) + 1)
     beastHealth = 50
   }
 })
+function isDead(){
+  if(healthCurrent <= 0){
+    textBox.textContent = `Sorry friend your quest has ended, perhaps you can try again as someone new`
+    btnNoneFight()
+   }
+}
 
 class TheCharcter{
 constructor(name, health, baseAttack, skill, skillAttack, skillPoints){
@@ -242,7 +247,7 @@ function btnNone(){
   })
  }
  function monsterAttack(){
- let attackAmount = Math.floor((Math.random() * 6) + 1)
+ let attackAmount = Math.floor((Math.random() * 10) + 1)
  healthCurrent -= attackAmount 
  health.textContent = `Health: ${healthCurrent}`
  return attackAmount
@@ -252,4 +257,5 @@ function btnNone(){
   gold += Math.floor((Math.random() * 8) + 1)
   goldCount.textContent = `Gold: ${gold}`
   strike.style.display = "none"
+  skillStrike.style.display = "none"
  }
