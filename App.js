@@ -32,9 +32,9 @@ let breadHeal = 25
 let wpCurrent = 4
 let wpUpgrade = 4
 let gold = 10
-let monsters = ["slime","ork","treeBeast"]
-let monstersHealth = Math.floor((Math.random() * 20) + 1)
-let BeastHealth = Math.floor((Math.random() * 80) + 1)
+let monstersHealth = 30
+let beastHealth = 50
+let skillAttackPower = Math.floor((Math.random() * 8) + 1)
 // Character Select//
 theArcher.addEventListener("click", function(){
   health.textContent = `Health: ${healthCurrent}`
@@ -120,7 +120,7 @@ cave.addEventListener('click', function(){
   } else{
     textBox.textContent = moreGold
   }
-
+ 
  
  })
  weapon.addEventListener('click', function(){
@@ -141,18 +141,27 @@ cave.addEventListener('click', function(){
 strike.addEventListener('click',function(){
   if(monstersHealth >= 0){
     monstersHealth -= wpCurrent
+    beastHealth -= wpCurrent
     textBox.textContent = `You strike the monster and did ${wpCurrent} damage`
     monsterAttack()
+    console.log(monstersHealth)
   } else{
-    textBox.textContent = `You defeated the monster enjoy some gold`
-    gold += Math.floor((Math.random() * 8) + 1)
-    goldCount.textContent = `Gold: ${gold}`
-    
+    reward()
+    monstersHealth = 30
+    beastHealth = 50
   }
- 
-  
-  
-  console.log(monstersHealth)
+})
+skillStrike.addEventListener('click', function(){
+  if(monstersHealth >= 0){
+    monstersHealth -= skillAttackPower
+    beastHealth -= skillAttackPower
+    textBox.textContent = `You strike the monster and did ${skillAttackPower} damage`
+    monsterAttack()
+  } else{
+    reward()
+    monstersHealth = 30
+    beastHealth = 50
+  }
 })
 
 class TheCharcter{
@@ -234,11 +243,13 @@ function btnNone(){
  }
  function monsterAttack(){
  let attackAmount = Math.floor((Math.random() * 6) + 1)
- console.log(attackAmount)
  healthCurrent -= attackAmount 
- console.log(healthCurrent)
  health.textContent = `Health: ${healthCurrent}`
  return attackAmount
- 
  }
- 
+ function reward(){
+  textBox.textContent = `You defeated the monster enjoy some gold`
+  gold += Math.floor((Math.random() * 8) + 1)
+  goldCount.textContent = `Gold: ${gold}`
+  strike.style.display = "none"
+ }
