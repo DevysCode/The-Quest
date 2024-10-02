@@ -194,7 +194,7 @@ const dialogTreeTh =  `Welcome traveler its time to begin your quest. You are th
 const dialogTreeMa =  `Welcome traveler its time to begin your quest. You are the ${mage.name} where would you like to go to start you're journey, the tavern, the caves or straight to the beast`
 const dialogTreeDefault = `Where should we go to now traveler, buy more supplies, gather more gold in the caves or take on the beast?`
 const dialogTreeTav = `Welcome to the tavern my friend if you have gold to spend i'll happily give you some items for your journey. I've got food to help your health and a blacksmith to make your weapon stronger. Breads 5 gold and the blacksmith charges 10 gold.`
-const dialogTreeCav = `These caves are dangerous filled with all sorts of monsters, but the loot and gold may help you defeat the beast, a mopnster approaches what will you do`
+const dialogTreeCav = `These caves are dangerous filled with all sorts of monsters, but the loot and gold may help you defeat the beast, a monster approaches what will you do`
 const dialogTreeBea = `The time has come fight the Beast and complete your journey, make sure your ready my friend!`
 const moreGold = `I'm not running a charity here bring me more gold and then I can help you`
 //dynamic buttons//
